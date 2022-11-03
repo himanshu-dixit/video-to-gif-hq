@@ -1,14 +1,14 @@
 # [theme]
 # # dark theme
 # primaryColor="#f63366"
-# backgroundColor="#0e1117"
+# backgroundColor="red"
 # secondaryBackgroundColor="#31333F"
 # textColor="#fafafa"
 # font="sans serif"
 [theme]
 # shades of purple
 primaryColor="#fad000"
-backgroundColor="#28284e"
+backgroundColor="#101010"
 secondaryBackgroundColor="#222145"
 textColor="#ffffff"
 font="sans serif"
