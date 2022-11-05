@@ -15,6 +15,8 @@ downloadfile = None
 def save_uploaded_file(uploadedfile):
   random_string = str(random.randint(0, 9999999)) + "-"
   tmp_file_name = random_string + uploadedfile.name
+  if not os.path.exists("tmp"):
+    os.makedirs("tmp")
   with open(os.path.join("tmp",tmp_file_name),"wb") as f:
      f.write(uploadedfile.getbuffer())
   return tmp_file_name
@@ -41,8 +43,7 @@ def on_change_callback():
 # and then download the converted wav file.
 if __name__ == '__main__':
     st.title('HQ Video to gif')
-    st.markdown("""Convert video to gif with custom palette. Generally high quality""")
-    st.text(f'📺 Gif from video with custom rgb palette with floyd steinberg dithering')
+    st.markdown("""📺 Gif from video with custom rgb palette with floyd steinberg dithering""")
     uploaded_mp4_file = st.file_uploader('Upload Your MP4 File', type=['mp4'], on_change=on_change_callback, accept_multiple_files=0)
 
     if uploaded_mp4_file:
