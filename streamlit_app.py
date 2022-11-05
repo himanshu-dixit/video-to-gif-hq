@@ -42,6 +42,7 @@ def on_change_callback():
 if __name__ == '__main__':
     st.title('HQ Video to gif')
     st.markdown("""Convert video to gif with custom palette. Generally high quality""")
+    st.text(f'📺 Gif from video with custom rgb palette with floyd steinberg dithering')
     uploaded_mp4_file = st.file_uploader('Upload Your MP4 File', type=['mp4'], on_change=on_change_callback, accept_multiple_files=0)
 
     if uploaded_mp4_file:
