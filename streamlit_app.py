@@ -12,9 +12,12 @@ uploaded_mp4_file_length = 0
 filename = None
 downloadfile = None
 
+def remove(string):
+    return string.replace(" ", "")
+
 def save_uploaded_file(uploadedfile):
   random_string = str(random.randint(0, 9999999)) + "-"
-  tmp_file_name = random_string + uploadedfile.name
+  tmp_file_name = random_string + remove(uploadedfile.name)
   if not os.path.exists("tmp"):
     os.makedirs("tmp")
   with open(os.path.join("tmp",tmp_file_name),"wb") as f:
@@ -25,6 +28,7 @@ def save_uploaded_file(uploadedfile):
 def on_file_change(uploaded_mp4_file):
     print(uploaded_mp4_file)
     file_name = save_uploaded_file(uploaded_mp4_file)
+
 
     output = subprocess.getoutput("./convert_mp4_to_gif.sh ./tmp/"+file_name)
     gif_file_name = "./tmp/"+file_name+".gif"
@@ -42,7 +46,7 @@ def on_change_callback():
 # The below code is a simple streamlit web app that allows you to upload an mp3 file
 # and then download the converted wav file.
 if __name__ == '__main__':
-    st.title('HQ Video to gif')
+    st.title('Videos to HQ gif')
     st.markdown("""📺 Gif from video with custom rgb palette with floyd steinberg dithering""")
     uploaded_mp4_file = st.file_uploader('Upload Your MP4 File', type=['mp4'], on_change=on_change_callback, accept_multiple_files=0)
 
